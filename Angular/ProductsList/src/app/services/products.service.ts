@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs'
-import { Products } from '../products';
+import { Product } from '../product';
 import { environment } from 'src/environments/environment.development';
 import { Injectable } from '@angular/core';
 
@@ -13,7 +13,8 @@ export class ProductsService {
 
   constructor(private api: HttpClient) { }
 
-  public getProducts(): Observable<Products[]> {
-    return this.api.get<Products[]>(this.apiUrl);
+  public getProducts(): Observable<{products: Product[]}> {
+    return this.api.get<{products: Product[]}>(`${this.apiUrl}`);
   }
 }
+

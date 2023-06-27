@@ -1,4 +1,4 @@
-import { Products } from './../products';
+import { Product } from '../product';
 import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '../services/products.service';
 import { environment } from 'src/environments/environment.development';
@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment.development';
 
 export class ProductsListComponent implements OnInit {
 
-  data!: Products[];
+  products!: Product[];
   baseApiUrl = environment.baseApiUrl;
 
   constructor(private productsService: ProductsService) {
@@ -22,9 +22,10 @@ export class ProductsListComponent implements OnInit {
   }
 
   getAllProducts() {
-    this.productsService.getProducts().subscribe((response: Products[]) => {
-      const product = response.length;
-      console.log("response: ",product)
+    this.productsService.getProducts().subscribe(response => {
+      this.products = response.products;
+      console.log("response: ",this.products)
     });
-  }
+}
+
 }

@@ -1,5 +1,4 @@
-export interface Products {
-  products: any;
+export interface Product {
   id: number;
   title: string;
   description: string;
@@ -12,3 +11,4 @@ export interface Products {
   thumbnail: string;
   images: string[];
 }
+
